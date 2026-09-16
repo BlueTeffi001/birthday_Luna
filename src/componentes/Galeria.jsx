@@ -41,7 +41,7 @@ const regalosList = [
     id: 5,
     titulo: "Video para Lunita",
     autor: "Danny",
-    archivo: "/regalos-luna/regalo-danny.mov",
+    archivo: "/regalos-luna/regalo-danny.mp4",
     tipo: "video",
     etiqueta: "🎬 Mensaje de Video",
     cajaEstilo: "celeste",
