@@ -424,97 +424,134 @@ body {
 }
 
 /* Grid en Escritorio (3 columnas de tarjetas en arco) */
+.galeria__carrusel-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+}
+
 .galeria__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 32px;
   align-items: stretch;
 }
 
 .tarjeta-arco {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(20, 46, 88, 0.35);
-  border-radius: 140px 140px 16px 16px;
-  padding: 14px 14px 22px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  border: 1.8px solid rgba(255, 255, 255, 0.95);
+  outline: 1px solid rgba(20, 46, 88, 0.12);
+  border-radius: 170px 170px 24px 24px;
+  padding: 16px 16px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: var(--sombra-celestial);
+  box-shadow: 0 14px 35px rgba(20, 46, 88, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   cursor: pointer;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .tarjeta-arco:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 45px rgba(20, 46, 88, 0.22);
+  transform: translateY(-7px);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 20px 48px rgba(20, 46, 88, 0.2), 0 0 30px rgba(255, 255, 255, 0.85);
 }
 
 .tarjeta-sorpresa__frame {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 130px 130px 12px 12px;
-  overflow: hidden;
-  margin-bottom: 12px;
+  aspect-ratio: 1 / 1;
+  border-radius: 150px 150px 18px 18px;
+  overflow: visible;
+  margin-bottom: 8px;
   position: relative;
-  background: linear-gradient(180deg, rgba(20, 46, 88, 0.15) 0%, rgba(20, 46, 88, 0.35) 100%);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.svg-caja-regalo {
+.svg-caja-regalo-3d {
   width: 100%;
   height: 100%;
-  padding: 16px;
+  display: block;
+  transition: transform 0.35s ease;
 }
 
-.tarjeta-sorpresa__lazo-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--azul-noche);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.tarjeta-arco:hover .svg-caja-regalo-3d {
+  transform: scale(1.04);
 }
 
 .tarjeta-sorpresa__subhead {
   font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--azul-celeste-texto);
-  margin-top: 4px;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  font-weight: 500;
 }
 
 .tarjeta-sorpresa__autor {
   font-family: var(--fuente-titulo);
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  font-weight: 500;
   color: var(--azul-noche);
-  margin: 2px 0 8px;
+  margin: 0 0 16px;
 }
 
-.tarjeta-sorpresa__accion {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--azul-noche);
-  background: rgba(255, 255, 255, 0.75);
-  padding: 6px 16px;
-  border-radius: 999px;
+.tarjeta-sorpresa__accion-wrapper {
   margin-top: auto;
-  border: 1px solid var(--borde-delicado);
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
 }
 
-.tarjeta-arco:hover .tarjeta-sorpresa__accion {
+.tarjeta-sorpresa__btn {
   background: var(--azul-noche);
   color: #ffffff;
-  border-color: var(--azul-noche);
+  padding: 10px 30px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1.5px solid var(--azul-noche);
+  box-shadow: 0 6px 18px rgba(20, 46, 88, 0.22);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 140px;
+}
+
+.tarjeta-arco:hover .tarjeta-sorpresa__btn {
+  background: var(--azul-noche-suave);
+  box-shadow: 0 8px 24px rgba(20, 46, 88, 0.32);
+}
+
+.tarjeta-sorpresa__btn--abierto {
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--azul-noche);
+  border: 1.5px solid var(--azul-noche);
+  box-shadow: 0 4px 14px rgba(20, 46, 88, 0.1);
+}
+
+.tarjeta-arco:hover .tarjeta-sorpresa__btn--abierto {
+  background: var(--azul-noche);
+  color: #ffffff;
+}
+
+.tarjeta-sorpresa__badge-abierto {
+  display: inline-block;
+  background: rgba(20, 46, 88, 0.08);
+  color: var(--azul-noche-suave);
+  padding: 3px 14px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
 }
 
 /* Animación de apertura al pulsar */
@@ -524,8 +561,46 @@ body {
 
 @keyframes abrirPulso {
   0% { transform: scale(1); }
-  50% { transform: scale(1.06) rotate(2deg); }
+  50% { transform: scale(1.05) rotate(1.5deg); }
   100% { transform: scale(1); }
+}
+
+/* Flechas Flotantes del Carrusel */
+.carrusel-flecha-flotante {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(20, 46, 88, 0.2);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  color: var(--azul-noche);
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 6px 18px rgba(20, 46, 88, 0.14);
+  transition: all 0.25s ease;
+}
+
+.carrusel-flecha-flotante:hover {
+  background: var(--azul-noche);
+  color: #ffffff;
+  border-color: var(--azul-noche);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carrusel-flecha--izq {
+  left: -18px;
+}
+
+.carrusel-flecha--der {
+  right: -18px;
 }
 
 /* ---------- Modal Popup de Regalo Original Completo ---------- */

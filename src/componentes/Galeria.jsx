@@ -129,120 +129,197 @@ const regalosList = [
   },
 ];
 
-// Ilustraciones SVG en azul, celeste y plateado para las cajas de regalo
+// Ilustraciones SVG 3D vectoriales en azul noche, celeste y plateado con cintas satinadas y dijes
 function IlustracionCaja({ estilo, abierta }) {
-  if (estilo === "azul") {
-    return (
-      <svg viewBox="0 0 200 240" className="svg-caja-regalo" aria-hidden="true">
-        <defs>
-          <linearGradient id="gradAzul" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#1e3e6f" />
-            <stop offset="100%" stopColor="#0f2244" />
-          </linearGradient>
-          <linearGradient id="cintaPlata" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#e2eeff" />
-            <stop offset="50%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="#b8d4f8" />
-          </linearGradient>
-        </defs>
-        <circle cx="100" cy="120" r="70" fill="rgba(255,255,255,0.06)" />
-        {/* Cuerpo */}
-        <rect x="45" y="90" width="110" height="95" rx="8" fill="url(#gradAzul)" stroke="#b8d4f8" strokeWidth="1.5" />
-        {/* Tapa */}
-        <rect
-          x="40"
-          y={abierta ? "55" : "72"}
-          width="120"
-          height="24"
-          rx="4"
-          fill="#264a7f"
-          stroke="#e2eeff"
-          strokeWidth="1.5"
-          style={{ transition: "transform 0.3s ease, y 0.3s ease" }}
-        />
-        {/* Cintas */}
-        <rect x="90" y={abierta ? "55" : "72"} width="20" height={abierta ? "130" : "113"} fill="url(#cintaPlata)" />
-        <rect x="45" y="125" width="110" height="18" fill="url(#cintaPlata)" />
-        {/* Moño */}
-        <path d={abierta ? "M 82,55 C 60,25 95,30 98,55 Z" : "M 82,72 C 60,40 95,45 98,72 Z"} fill="url(#cintaPlata)" />
-        <path d={abierta ? "M 118,55 C 140,25 105,30 102,55 Z" : "M 118,72 C 140,40 105,45 102,72 Z"} fill="url(#cintaPlata)" />
-        <circle cx="100" cy={abierta ? "55" : "72"} r="7" fill="#ffffff" />
-        <text x="30" y="55" fill="#ffffff" fontSize="14">✦</text>
-        <text x="160" y="80" fill="#ffffff" fontSize="12">✨</text>
-      </svg>
-    );
-  }
+  const configs = {
+    azul: {
+      cajaBaseTop: "#1c3866",
+      cajaBaseBottom: "#0b1836",
+      cajaTapaTop: "#254a85",
+      cajaTapaBottom: "#13284d",
+      cintaGrad1: "#ffffff",
+      cintaGrad2: "#e0ebf8",
+      cintaGrad3: "#b3d2f7",
+      brilloTapa: "#6499e4",
+      bordeCaja: "#4d82cf",
+      charmBg: "url(#gradOro)",
+      charmTexto: "PARA TI ✨",
+      estrellasCol: "#ffe599",
+    },
+    celeste: {
+      cajaBaseTop: "#173663",
+      cajaBaseBottom: "#0b1c37",
+      cajaTapaTop: "#22477f",
+      cajaTapaBottom: "#112648",
+      cintaGrad1: "#e8f3ff",
+      cintaGrad2: "#b5d8ff",
+      cintaGrad3: "#7db8f8",
+      brilloTapa: "#8ec2ff",
+      bordeCaja: "#6ca8f5",
+      charmBg: "url(#gradPlata)",
+      charmTexto: "LUNA ✦",
+      estrellasCol: "#ffffff",
+    },
+    plateado: {
+      cajaBaseTop: "#142a52",
+      cajaBaseBottom: "#08152e",
+      cajaTapaTop: "#203e73",
+      cajaTapaBottom: "#0f2040",
+      cintaGrad1: "#ffffff",
+      cintaGrad2: "#d9e7f9",
+      cintaGrad3: "#a7caf5",
+      brilloTapa: "#8fbcf8",
+      bordeCaja: "#74a5ea",
+      charmBg: "url(#gradOro)",
+      charmTexto: "SIEMPRE 💖",
+      estrellasCol: "#ffd966",
+    },
+  };
 
-  if (estilo === "celeste") {
-    return (
-      <svg viewBox="0 0 200 240" className="svg-caja-regalo" aria-hidden="true">
-        <defs>
-          <linearGradient id="gradCeleste" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#96c5f7" />
-            <stop offset="100%" stopColor="#5b9bd5" />
-          </linearGradient>
-          <linearGradient id="cintaNoche" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#142e58" />
-            <stop offset="100%" stopColor="#264a7f" />
-          </linearGradient>
-        </defs>
-        <circle cx="100" cy="120" r="70" fill="rgba(255,255,255,0.12)" />
-        <rect x="45" y="90" width="110" height="95" rx="8" fill="url(#gradCeleste)" stroke="#ffffff" strokeWidth="1.5" />
-        <rect
-          x="40"
-          y={abierta ? "55" : "72"}
-          width="120"
-          height="24"
-          rx="4"
-          fill="#7cb3ed"
-          stroke="#ffffff"
-          strokeWidth="1.5"
-          style={{ transition: "transform 0.3s ease, y 0.3s ease" }}
-        />
-        <rect x="90" y={abierta ? "55" : "72"} width="20" height={abierta ? "130" : "113"} fill="url(#cintaNoche)" />
-        <rect x="45" y="125" width="110" height="18" fill="url(#cintaNoche)" />
-        <path d={abierta ? "M 82,55 C 60,25 95,30 98,55 Z" : "M 82,72 C 60,40 95,45 98,72 Z"} fill="url(#cintaNoche)" />
-        <path d={abierta ? "M 118,55 C 140,25 105,30 102,55 Z" : "M 118,72 C 140,40 105,45 102,72 Z"} fill="url(#cintaNoche)" />
-        <circle cx="100" cy={abierta ? "55" : "72"} r="7" fill="#ffffff" />
-        <text x="160" y="55" fill="#ffffff" fontSize="14">✦</text>
-        <text x="25" y="85" fill="#ffffff" fontSize="12">✨</text>
-      </svg>
-    );
-  }
+  const cfg = configs[estilo] || configs.azul;
 
-  // Estilo Plateado / Cristal
   return (
-    <svg viewBox="0 0 200 240" className="svg-caja-regalo" aria-hidden="true">
+    <svg viewBox="0 0 260 250" className="svg-caja-regalo-3d" aria-hidden="true">
       <defs>
-        <linearGradient id="gradPlata" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id={`gradCaja_${estilo}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor={cfg.cajaBaseTop} />
+          <stop offset="100%" stopColor={cfg.cajaBaseBottom} />
+        </linearGradient>
+
+        <linearGradient id={`gradTapa_${estilo}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor={cfg.cajaTapaTop} />
+          <stop offset="100%" stopColor={cfg.cajaTapaBottom} />
+        </linearGradient>
+
+        <linearGradient id={`gradCinta_${estilo}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor={cfg.cintaGrad1} />
+          <stop offset="50%" stopColor={cfg.cintaGrad2} />
+          <stop offset="100%" stopColor={cfg.cintaGrad3} />
+        </linearGradient>
+
+        <linearGradient id="gradOro" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fff2ac" />
+          <stop offset="50%" stopColor="#ffd700" />
+          <stop offset="100%" stopColor="#caa000" />
+        </linearGradient>
+
+        <linearGradient id="gradPlata" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#d0e2fa" />
+          <stop offset="50%" stopColor="#e2ecf9" />
+          <stop offset="100%" stopColor="#b0cded" />
         </linearGradient>
-        <linearGradient id="cintaAzul" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#2c5ca3" />
-          <stop offset="100%" stopColor="#142e58" />
-        </linearGradient>
+
+        <radialGradient id={`haloGlow_${estilo}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(255, 255, 255, 0.9)" />
+          <stop offset="45%" stopColor="rgba(197, 222, 253, 0.45)" />
+          <stop offset="100%" stopColor="rgba(197, 222, 253, 0)" />
+        </radialGradient>
       </defs>
-      <circle cx="100" cy="120" r="70" fill="rgba(255,255,255,0.2)" />
-      <rect x="45" y="90" width="110" height="95" rx="8" fill="url(#gradPlata)" stroke="#2c5ca3" strokeWidth="1.5" />
+
+      {/* 1. Halo Luminoso posterior */}
+      <circle cx="130" cy="130" r="92" fill={`url(#haloGlow_${estilo})`} />
+
+      {/* 2. Sombra 3D suave de suelo */}
+      <ellipse cx="130" cy="220" rx="76" ry="12" fill="rgba(10, 24, 48, 0.22)" />
+
+      {/* 3. Estrellitas brillantes flotantes */}
+      <g opacity="0.9">
+        <path d="M 38,65 Q 38,75 48,75 Q 38,75 38,85 Q 38,75 28,75 Q 38,75 38,65 Z" fill={cfg.estrellasCol} />
+        <path d="M 218,60 Q 218,68 226,68 Q 218,68 218,76 Q 218,68 210,68 Q 218,68 218,60 Z" fill={cfg.estrellasCol} />
+        <circle cx="60" cy="185" r="2" fill="#ffffff" opacity="0.75" />
+        <circle cx="205" cy="175" r="2.5" fill="#ffffff" opacity="0.85" />
+        <circle cx="190" cy="90" r="1.5" fill="#ffffff" opacity="0.9" />
+      </g>
+
+      {/* 4. Cuerpo de la Caja */}
       <rect
-        x="40"
-        y={abierta ? "55" : "72"}
-        width="120"
-        height="24"
-        rx="4"
-        fill="#e8f2ff"
-        stroke="#2c5ca3"
-        strokeWidth="1.5"
-        style={{ transition: "transform 0.3s ease, y 0.3s ease" }}
+        x="52"
+        y="118"
+        width="156"
+        height="94"
+        rx="10"
+        fill={`url(#gradCaja_${estilo})`}
+        stroke={cfg.bordeCaja}
+        strokeWidth="1.2"
       />
-      <rect x="90" y={abierta ? "55" : "72"} width="20" height={abierta ? "130" : "113"} fill="url(#cintaAzul)" />
-      <rect x="45" y="125" width="110" height="18" fill="url(#cintaAzul)" />
-      <path d={abierta ? "M 82,55 C 60,25 95,30 98,55 Z" : "M 82,72 C 60,40 95,45 98,72 Z"} fill="url(#cintaAzul)" />
-      <path d={abierta ? "M 118,55 C 140,25 105,30 102,55 Z" : "M 118,72 C 140,40 105,45 102,72 Z"} fill="url(#cintaAzul)" />
-      <circle cx="100" cy={abierta ? "55" : "72"} r="7" fill="#2c5ca3" />
-      <text x="35" y="65" fill="#142e58" fontSize="14">✦</text>
-      <text x="165" y="75" fill="#142e58" fontSize="12">✨</text>
+
+      {/* Constelaciones grabadas */}
+      <g opacity="0.32" fill="none" stroke="#ffffff" strokeWidth="0.8">
+        <path d="M 72,138 L 80,143 L 92,140 L 108,150" strokeDasharray="2,2" />
+        <circle cx="72" cy="138" r="1.5" fill="#ffffff" />
+        <circle cx="80" cy="143" r="1.5" fill="#ffffff" />
+        <circle cx="92" cy="140" r="1.5" fill="#ffffff" />
+        <circle cx="108" cy="150" r="2" fill="#ffffff" />
+        <path d="M 174,158 A 8,8 0 1,0 182,170 A 10,10 0 1,1 174,158 Z" fill="#ffffff" stroke="none" opacity="0.6" />
+      </g>
+
+      {/* Cintas en el Cuerpo */}
+      <rect x="118" y="118" width="24" height="94" fill={`url(#gradCinta_${estilo})`} />
+      <rect x="52" y="156" width="156" height="20" fill={`url(#gradCinta_${estilo})`} />
+
+      {/* 5. Tapa y Moño Satinado (Animados al abrirse) */}
+      <g
+        className="caja-tapa-grupo"
+        style={{
+          transform: abierta ? "translateY(-24px) rotate(-3deg)" : "translateY(0px)",
+          transition: "transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }}
+      >
+        <rect
+          x="44"
+          y="94"
+          width="172"
+          height="28"
+          rx="6"
+          fill={`url(#gradTapa_${estilo})`}
+          stroke={cfg.brilloTapa}
+          strokeWidth="1.5"
+        />
+        <rect x="118" y="94" width="24" height="28" fill={`url(#gradCinta_${estilo})`} />
+
+        {/* Bucles de Moño Satinado 3D */}
+        <path
+          d="M 130,94 C 80,44 50,72 125,94 Z"
+          fill={`url(#gradCinta_${estilo})`}
+          stroke="rgba(255,255,255,0.75)"
+          strokeWidth="1"
+        />
+        <path d="M 128,94 C 92,58 72,74 123,94 Z" fill="rgba(10,24,48,0.12)" />
+
+        <path
+          d="M 130,94 C 180,44 210,72 135,94 Z"
+          fill={`url(#gradCinta_${estilo})`}
+          stroke="rgba(255,255,255,0.75)"
+          strokeWidth="1"
+        />
+        <path d="M 132,94 C 168,58 188,74 137,94 Z" fill="rgba(10,24,48,0.12)" />
+
+        {/* Caídas elegantes de la cinta */}
+        <path
+          d="M 123,96 C 102,118 92,142 85,166 L 99,163 C 105,146 114,126 126,98 Z"
+          fill={`url(#gradCinta_${estilo})`}
+          opacity="0.95"
+        />
+        <path
+          d="M 137,96 C 158,118 168,142 175,166 L 161,163 C 155,146 146,126 134,98 Z"
+          fill={`url(#gradCinta_${estilo})`}
+          opacity="0.95"
+        />
+
+        {/* Nudo Central */}
+        <circle cx="130" cy="94" r="10" fill={`url(#gradCinta_${estilo})`} stroke="#ffffff" strokeWidth="1.2" />
+        <circle cx="127" cy="91" r="3" fill="#ffffff" opacity="0.85" />
+
+        {/* Placa / Dije Colgante "PARA TI" */}
+        <path d="M 125,100 Q 110,118 104,132" stroke="#d4af37" strokeWidth="1.5" fill="none" />
+        <g transform="translate(104, 134) rotate(-10)">
+          <rect x="-18" y="0" width="36" height="20" rx="4" fill={cfg.charmBg} stroke="#ffffff" strokeWidth="1" />
+          <circle cx="0" cy="0" r="2" fill="#7a5c00" />
+          <text x="0" y="14" fill="#142e58" fontSize="7" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">
+            {cfg.charmTexto}
+          </text>
+        </g>
+      </g>
     </svg>
   );
 }
@@ -336,7 +413,7 @@ function Galeria() {
             aria-hidden="true"
           />
           <span className="titulo-texto">
-            Regalos de otros<br className="br-movil" /> mundos
+            Sorpresas para ti
           </span>
           <img
             src="/imagenes/icono-estrella.png"
@@ -345,7 +422,7 @@ function Galeria() {
             aria-hidden="true"
           />
         </h2>
-        <p className="seccion-subtitulo">HECHOS PARA TI, CON MUCHO CARIÑO</p>
+        <p className="seccion-subtitulo">UN POQUITO DE CARIÑO, ENVUELTO PARA TI</p>
       </div>
 
       <div className="galeria__carrusel-wrapper">
@@ -357,26 +434,34 @@ function Galeria() {
             return (
               <article
                 key={regalo.id}
-                className={`tarjeta-arco tarjeta-sorpresa${estaAnimando ? " abriendose" : ""}`}
+                className={`tarjeta-arco tarjeta-sorpresa${estaAbierto ? " esta-abierta" : ""}${estaAnimando ? " abriendose" : ""}`}
                 onClick={() => handleAbrirRegalo(regalo)}
                 role="button"
                 tabIndex={0}
               >
-                {/* Marco en forma de Arco Místico */}
+                {/* Marco de Arco con Fondo Integrado */}
                 <div className="tarjeta-arco__frame tarjeta-sorpresa__frame">
                   <IlustracionCaja estilo={regalo.cajaEstilo} abierta={estaAbierto} />
-
-                  <div className="tarjeta-sorpresa__lazo-badge">
-                    {estaAbierto ? "✨ Abierto" : "🎁 Sorpresa"}
-                  </div>
                 </div>
 
-                {/* Textos Informativos de la Caja Cerrada / Abierta */}
-                <p className="tarjeta-sorpresa__subhead">Una sorpresa para ti</p>
-                <p className="tarjeta-sorpresa__autor">De: {regalo.autor}</p>
+                {/* Textos Informativos */}
+                <p className="tarjeta-sorpresa__subhead">UNA SORPRESA PARA TI</p>
+                <h3 className="tarjeta-sorpresa__autor">De: {regalo.autor}</h3>
 
-                <div className="tarjeta-sorpresa__accion">
-                  {estaAbierto ? "Abierto · Volver a ver 💖" : "Toca para abrir ✨"}
+                {/* Botón de Acción y Distintivo Abierto */}
+                <div className="tarjeta-sorpresa__accion-wrapper">
+                  <button
+                    type="button"
+                    className={`tarjeta-sorpresa__btn${estaAbierto ? " tarjeta-sorpresa__btn--abierto" : ""}`}
+                  >
+                    {estaAbierto ? "Volver a ver" : "Abrir regalo"}
+                  </button>
+
+                  {estaAbierto && (
+                    <span className="tarjeta-sorpresa__badge-abierto">
+                      Abierto
+                    </span>
+                  )}
                 </div>
               </article>
             );
