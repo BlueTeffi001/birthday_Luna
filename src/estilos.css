@@ -116,13 +116,11 @@ body {
   display: none;
 }
 
-/* Banner de Escritorio de 100% de Ancho de Pantalla (Enlarged prominent view) */
+/* Banner de Escritorio de 100% de Ancho de Pantalla (2:1 completo sin cortes) */
 .portada__full-banner {
   position: relative;
   width: 100%;
-  min-height: 540px;
-  height: 68vh;
-  max-height: 880px;
+  aspect-ratio: 2 / 1;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -134,9 +132,9 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center right;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.5s ease;
 }
 
 .portada__banner-wrapper {
@@ -287,12 +285,12 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 70px 20px 20px;
+    padding: 10px 16px 16px;
   }
 
   .vista-movil .portada__adorno-estrella {
-    margin: 0 auto 12px;
-    max-width: 220px;
+    margin: 0 auto 6px;
+    max-width: 180px;
   }
 
   .portada__titulo-movil {
@@ -1020,9 +1018,7 @@ body {
   }
 
   .portada__full-banner {
-    min-height: 620px;
-    height: 75vh;
-    max-height: 920px;
+    max-height: 750px;
   }
 
   .portada__banner-wrapper {
@@ -1053,9 +1049,7 @@ body {
   }
 
   .portada__full-banner {
-    min-height: 700px;
-    height: 80vh;
-    max-height: 1000px;
+    max-height: 820px;
   }
 
   .seccion-titulo {
