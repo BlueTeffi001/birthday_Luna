@@ -1,0 +1,15 @@
+
+> cumple-luna@1.0.0 dev
+> vite --open
+
+
+  [32m[1mVITE[22m v8.3.0[39m  [2mready in [0m[1m1650[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m6:50:53 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/componentes/ReproductorMusica.jsx[22m
+[2m6:52:09 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/componentes/ReproductorMusica.jsx[22m
+[2m6:55:34 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/estilos.css[22m
+[2m6:55:40 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/estilos.css[22m
+[2m6:56:47 p. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/estilos.css[22m
