@@ -801,8 +801,8 @@ body {
 /* ---------- Galería en Móvil (< 850px): Peek Carousel ---------- */
 @media (max-width: 849px) {
   .galeria {
-    margin: 45px auto 30px;
-    padding: 20px 0 30px;
+    margin: 15px auto 24px;
+    padding: 10px 0 24px;
   }
 
   .seccion-head {
