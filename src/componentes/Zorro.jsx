@@ -1,37 +1,37 @@
 import { useState } from "react";
 
-// AQUÍ VAN LOS MENSAJES REALES del zorro: se muestran por turno
-const mensajesZorro = [
-  "¡Feliz cumpleaños! Que tengas un día increíble. 🎂",
-  "Este zorro te quiere mucho. 🦊",
-  "Que la magia te acompañe todo el año. ✨",
-  "Sos una persona muy especial para tus mundos. 💙",
+const deseosZorro = [
+  "Que la magia te acompañe en cada nuevo paso que des. ✨",
+  "Gracias por iluminar nuestros mundos con tu presencia. 🌙",
+  "¡Feliz cumpleaños, Luna! Que se cumplan todos tus mayores sueños. 🎂",
+  "Este zorro estelar siempre velará por tus aventuras. 🦊",
 ];
 
 function Zorro() {
   const [indice, setIndice] = useState(0);
-  const [mensaje, setMensaje] = useState("");
+  const [mostrandoMensaje, setMostrandoMensaje] = useState(false);
 
-  function mostrarZorro() {
-    setMensaje(mensajesZorro[indice]);
-    setIndice((indice + 1) % mensajesZorro.length);
+  function revelarDeseo() {
+    setMostrandoMensaje(true);
+    setIndice((prev) => (prev + 1) % deseosZorro.length);
   }
 
   return (
-    <section className="zorro" id="zorro" aria-label="Zorro interactivo">
-      <h2 className="titulo-seccion">Tu zorro guardián</h2>
-      <button
-        className="zorro__boton"
-        id="zorro-boton"
-        type="button"
-        aria-label="Tocar al zorro"
-        onClick={mostrarZorro}
-      >
-        <span className="zorro__emoji" aria-hidden="true">🦊</span>
-      </button>
-      <p className="zorro__mensaje" id="zorro-mensaje" role="status">
-        {mensaje}
-      </p>
+    <section className="zorro-section" id="zorro" aria-label="Zorro guardián">
+      <div className="zorro__container" onClick={revelarDeseo} role="button" tabIndex={0}>
+        <img
+          src="/imagenes/zorro.png"
+          alt="Zorro celestial durmiendo sobre flores azules"
+          className="zorro__imagen"
+        />
+        <p className="zorro__prompt">Tengo un deseo para ti...</p>
+      </div>
+
+      {mostrandoMensaje && (
+        <div className="zorro__globo-mensaje" role="status">
+          <p>{deseosZorro[indice]}</p>
+        </div>
+      )}
     </section>
   );
 }
