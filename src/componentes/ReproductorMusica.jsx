@@ -1,55 +1,66 @@
 import { useState, useEffect, useRef } from "react";
 
 function ReproductorMusica() {
-  const [reproduciendo, setReproduciendo] = useState(true);
+  const [reproduciendo, setReproduciendo] = useState(false);
   const audioRef = useRef(null);
+  const manualmentePausadoRef = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Forzar intento de reproducción inmediata al cargar la página
-    const intentarPlay = () => {
-      audio
-        .play()
-        .then(() => {
-          setReproduciendo(true);
-        })
-        .catch(() => {
-          // Si el navegador bloquea la reproducción sin interacción,
-          // se activa automáticamente en cualquier leve movimiento o toque
-          setReproduciendo(false);
-        });
+    const eventos = ["click", "touchstart", "scroll", "mousemove", "pointerdown", "keydown"];
+
+    const removerListeners = () => {
+      eventos.forEach((evt) => window.removeEventListener(evt, activarAutomatico));
     };
 
-    intentarPlay();
-
-    // Eventos globales para activar la música de inmediato apenas el usuario toque, deslice o mueva el cursor
     const activarAutomatico = () => {
+      // Si el usuario pausó intencionalmente, no auto-reproducir
+      if (manualmentePausadoRef.current) return;
+
       if (audio.paused) {
         audio
           .play()
-          .then(() => setReproduciendo(true))
+          .then(() => {
+            setReproduciendo(true);
+            removerListeners();
+          })
           .catch(() => {});
       }
     };
 
-    const eventos = ["click", "touchstart", "scroll", "mousemove", "pointerdown", "keydown"];
-    eventos.forEach((evt) => window.addEventListener(evt, activarAutomatico, { passive: true }));
+    // Intentar reproducción inmediata al montar
+    audio
+      .play()
+      .then(() => {
+        setReproduciendo(true);
+      })
+      .catch(() => {
+        setReproduciendo(false);
+        // Si el navegador requiere interacción previa, añadir listeners globales
+        eventos.forEach((evt) => window.addEventListener(evt, activarAutomatico, { passive: true }));
+      });
 
     return () => {
-      eventos.forEach((evt) => window.removeEventListener(evt, activarAutomatico));
+      removerListeners();
     };
   }, []);
 
-  function toggleMusica() {
+  function toggleMusica(e) {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
     const audio = audioRef.current;
     if (!audio) return;
 
     if (reproduciendo) {
+      manualmentePausadoRef.current = true;
       audio.pause();
       setReproduciendo(false);
     } else {
+      manualmentePausadoRef.current = false;
       audio
         .play()
         .then(() => setReproduciendo(true))
@@ -58,7 +69,7 @@ function ReproductorMusica() {
   }
 
   return (
-    <div className="reproductor-flotante">
+    <div className="reproductor-flotante" onClick={(e) => e.stopPropagation()}>
       <audio
         ref={audioRef}
         src="/cancion-luna.mp3"

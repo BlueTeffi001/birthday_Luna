@@ -27,7 +27,6 @@ const facetas = [
 function Portada() {
   // Default active faceta is 1 (banner2.png - celestial)
   const [activa, setActiva] = useState(1);
-  const [reproduciendo, setReproduciendo] = useState(false);
 
   useEffect(() => {
     const intervalo = setInterval(() => {
@@ -41,29 +40,8 @@ function Portada() {
     if (galeria) galeria.scrollIntoView({ behavior: "smooth" });
   }
 
-  function toggleMusica() {
-    setReproduciendo(!reproduciendo);
-  }
-
   return (
     <header className="portada" id="portada">
-      {/* Botón flotante de música en la barra superior */}
-      <div className="header-top">
-        <button
-          className={`boton-musica${reproduciendo ? " sonando" : ""}`}
-          type="button"
-          onClick={toggleMusica}
-          aria-label="Activar música de ambiente"
-        >
-          <span>♫</span>
-          <span>{reproduciendo ? "Música activa" : "Activar música"}</span>
-          <div className="wave-icon" aria-hidden="true">
-            <span className="wave-bar"></span>
-            <span className="wave-bar"></span>
-            <span className="wave-bar"></span>
-          </div>
-        </button>
-      </div>
 
       {/* --- VISTA ESCRITORIO (Banner Panorámico 2:1) --- */}
       <div className="vista-desktop">

@@ -987,7 +987,7 @@ body {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .reproductor-btn {
