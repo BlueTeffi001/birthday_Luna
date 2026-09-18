@@ -223,55 +223,74 @@ body {
   mix-blend-mode: multiply;
 }
 
-/* Selector de Facetas (Lunas) Ubicado Abajo del Banner */
-.facetas-container {
+/* Selector de Facetas Ubicado a la Derecha Superpuesto en la Parte Inferior de la Imagen */
+.facetas-orbitales {
   max-width: var(--max-ancho);
-  margin: 28px auto 0;
-  text-align: center;
-  padding: 0 24px;
-}
-
-.facetas__titulo {
-  font-family: var(--fuente-titulo);
-  font-size: 1.15rem;
-  color: var(--azul-noche);
-  margin-bottom: 16px;
-}
-
-.facetas__iconos {
+  margin: -70px auto 0;
+  padding: 0 clamp(80px, 14vw, 260px);
   display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 12px;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  position: relative;
+  z-index: 10;
 }
 
-.boton-faceta {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1.5px solid var(--borde-delicado);
-  background: rgba(255, 255, 255, 0.75);
+.facetas-orbitales__orbes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.orbe-lunar-user {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  color: var(--azul-noche);
+  padding: 4px;
+  transition: transform 0.3s ease;
 }
 
-.boton-faceta:hover,
-.boton-faceta.activa {
-  background: var(--azul-noche);
-  color: #ffffff;
-  border-color: var(--azul-noche);
-  transform: scale(1.12);
-  box-shadow: 0 6px 16px rgba(20, 46, 88, 0.25);
+.luna-user-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(20, 46, 88, 0.18));
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.facetas__ayuda {
-  font-size: 0.85rem;
+.orbe-lunar-user:hover {
+  transform: translateY(-4px);
+}
+
+.orbe-lunar-user:hover .luna-user-img {
+  transform: scale(1.16) rotate(6deg);
+  filter: drop-shadow(0 0 14px rgba(255, 229, 153, 0.85));
+}
+
+.orbe-lunar-user.activa .luna-user-img {
+  transform: scale(1.24);
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 10px rgba(100, 153, 228, 0.6));
+  animation: pulsoLunaUser 3s infinite ease-in-out;
+}
+
+@keyframes pulsoLunaUser {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8)); transform: scale(1.24); }
+  50% { filter: drop-shadow(0 0 24px rgba(255, 242, 172, 1)); transform: scale(1.28); }
+}
+
+.facetas-orbitales__leyenda {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: 0.88rem;
   color: var(--azul-celeste-texto);
+  margin-top: 8px;
 }
 
 /* ---------- Adaptación Vista Móvil (< 850px) ---------- */
@@ -336,6 +355,13 @@ body {
     color: var(--azul-noche-suave);
     margin: 14px 0 10px;
     font-style: italic;
+  }
+
+  .vista-movil .facetas-orbitales {
+    margin: 16px auto 0;
+    align-items: center;
+    text-align: center;
+    padding: 0;
   }
 
   .portada__cta-movil {
@@ -955,7 +981,10 @@ body {
   max-width: 280px;
   height: auto;
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 8px 16px rgba(20, 46, 88, 0.15));
+  border: none;
+  box-shadow: none;
+  outline: none;
+  filter: none;
 }
 
 .zorro__container:hover .zorro__imagen {
@@ -994,6 +1023,161 @@ body {
   border-top: 1px solid var(--borde-delicado);
   max-width: var(--max-ancho);
   margin: 0 auto;
+}
+
+/* ---------- Animaciones de la Dedicatoria Especial de Cierre ---------- */
+@keyframes latidoCorazon {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(255, 105, 180, 0.4)); }
+  50% { transform: scale(1.25); filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.8)); }
+}
+
+@keyframes resplandorCecilia {
+  0%, 100% {
+    color: var(--azul-noche);
+    text-shadow: 0 0 2px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    color: #173663;
+    text-shadow: 0 0 14px rgba(212, 175, 55, 0.6), 0 0 24px rgba(100, 153, 228, 0.4);
+  }
+}
+
+@keyframes titilarConstelacion {
+  0%, 100% { opacity: 0.3; transform: scale(0.9) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
+}
+
+@keyframes flotarMagico {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+  100% { transform: translateY(0px); }
+}
+
+.cierre__dedicatoria-especial {
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 24px 20px 30px;
+  margin: 10px auto 40px;
+  max-width: 700px;
+  text-align: center;
+  animation: flotarMagico 6s ease-in-out infinite;
+}
+
+/* Estrellitas flotantes decorativas animadas */
+.cierre__estrella-flotante {
+  position: absolute;
+  font-size: 1.25rem;
+  user-select: none;
+  pointer-events: none;
+  animation: titilarConstelacion 3s infinite ease-in-out;
+}
+
+.cierre__estrella--1 {
+  top: -10px;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.cierre__estrella--2 {
+  top: -5px;
+  right: 10%;
+  animation-delay: 1.2s;
+}
+
+.cierre__estrella--3 {
+  bottom: 25px;
+  left: 4%;
+  animation-delay: 0.6s;
+}
+
+.cierre__estrella--4 {
+  bottom: 20px;
+  right: 5%;
+  animation-delay: 1.8s;
+}
+
+.cierre__texto-dedicatoria {
+  font-family: var(--fuente-cuerpo);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--azul-noche);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.cierre__texto-destacado {
+  font-size: 1.18rem;
+}
+
+.cierre__nombre-resaltado {
+  font-family: var(--fuente-titulo);
+  font-size: 1.45rem;
+  font-weight: 700;
+  display: inline-block;
+  animation: resplandorCecilia 3.5s ease-in-out infinite;
+  padding: 0 4px;
+}
+
+.cierre__separador-estelar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+  color: var(--azul-celeste-texto);
+  font-size: 1rem;
+}
+
+.cierre__destello-icono {
+  opacity: 0.7;
+  animation: titilarConstelacion 2.5s infinite ease-in-out;
+}
+
+.cierre__corazon-latido {
+  font-size: 1.4rem;
+  display: inline-block;
+  animation: latidoCorazon 1.8s infinite ease-in-out;
+}
+
+.cierre__firma-box {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.cierre__firma-saludo {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--azul-noche-suave);
+}
+
+.cierre__firma-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--azul-noche);
+  letter-spacing: 0.03em;
+  transition: transform 0.3s ease;
+}
+
+.cierre__firma-nombre:hover {
+  transform: scale(1.05);
+}
+
+.cierre__firma-rol {
+  font-size: 0.9rem;
+  color: var(--azul-celeste-texto);
+  font-style: italic;
+  margin-top: 2px;
 }
 
 .cierre__magia {
@@ -1121,5 +1305,59 @@ body {
   .reproductor-btn {
     padding: 8px 14px;
     font-size: 0.78rem;
+  }
+}
+
+/* ---------- Separador de Sección entre Galería y Dedicatoria ---------- */
+.separador-seccion-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -15px auto 20px;
+  padding: 0 20px;
+}
+
+.separador-seccion-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  display: block;
+}
+
+/* ---------- Animación de Copos de Nieve Cayendo ---------- */
+.efecto-nieve-contenedor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.copo-nieve {
+  position: absolute;
+  top: -30px;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 16px rgba(197, 222, 253, 0.9);
+  user-select: none;
+  pointer-events: none;
+  animation: coposCaida linear infinite;
+  will-change: transform;
+}
+
+@keyframes coposCaida {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(var(--sway-offset, 20px)) rotate(180deg);
+  }
+  100% {
+    transform: translateY(105vh) translateX(calc(-1 * var(--sway-offset, 20px))) rotate(360deg);
   }
 }

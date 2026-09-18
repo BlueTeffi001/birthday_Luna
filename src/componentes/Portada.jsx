@@ -4,23 +4,26 @@ const facetas = [
   {
     id: 1,
     nombre: "Luna silvestre",
-    emoji: "🌒",
+    subtitulo: "Guerrera del bosque",
     src: "/imagenes/banner1.png",
     alt: "Faceta guerrera de Luna",
+    icono: "/imagenes/luna-nueva-3.png",
   },
   {
     id: 2,
     nombre: "Luna celestial",
-    emoji: "🌓",
+    subtitulo: "Guardián estelar",
     src: "/imagenes/banner2.png",
     alt: "Faceta principal de Luna con tiara y lechuza",
+    icono: "/imagenes/luna-nueva-1.png",
   },
   {
     id: 3,
     nombre: "Luna sabia",
-    emoji: "🌕",
+    subtitulo: "Luz de conocimiento",
     src: "/imagenes/banner3.png",
     alt: "Faceta de Luna con anteojos",
+    icono: "/imagenes/luna-nueva-2.png",
   },
 ];
 
@@ -40,11 +43,43 @@ function Portada() {
     if (galeria) galeria.scrollIntoView({ behavior: "smooth" });
   }
 
+  function renderSelectorFacetas() {
+    return (
+      <div className="facetas-orbitales">
+        <div className="facetas-orbitales__orbes">
+          {facetas.map((faceta, indice) => {
+            const esActiva = activa === indice;
+            return (
+              <button
+                key={faceta.id}
+                type="button"
+                className={`orbe-lunar-user${esActiva ? " activa" : ""}`}
+                onClick={() => setActiva(indice)}
+                aria-label={`Ver faceta ${faceta.nombre}`}
+              >
+                <img
+                  src={faceta.icono}
+                  alt={faceta.nombre}
+                  className="luna-user-img"
+                />
+              </button>
+            );
+          })}
+        </div>
+
+        <p className="facetas-orbitales__leyenda">
+          ✨ Toca una luna para cambiar su apariencia 🌙
+        </p>
+      </div>
+    );
+  }
+
   return (
     <header className="portada" id="portada">
 
       {/* --- VISTA ESCRITORIO (Banner Panorámico 2:1) --- */}
       <div className="vista-desktop">
+        {/* Banner Panorámico */}
         <div className="portada__full-banner">
           <img
             className="portada__full-banner-img"
@@ -83,25 +118,8 @@ function Portada() {
           </div>
         </div>
 
-        <div className="facetas-container">
-          <h3 className="facetas__titulo">✦ Las facetas de Luna ✦</h3>
-          <div className="facetas__iconos">
-            {facetas.map((faceta, indice) => (
-              <button
-                key={faceta.id}
-                className={`boton-faceta${activa === indice ? " activa" : ""}`}
-                type="button"
-                aria-label={`Ver ${faceta.nombre}`}
-                onClick={() => setActiva(indice)}
-              >
-                {faceta.emoji}
-              </button>
-            ))}
-          </div>
-          <p className="facetas__ayuda">
-            Toca una luna para cambiar su apariencia
-          </p>
-        </div>
+        {/* Lunas superpuestas encima de la imagen en la parte inferior derecha */}
+        {renderSelectorFacetas()}
       </div>
 
       {/* --- VISTA MÓVIL --- */}
@@ -130,28 +148,9 @@ function Portada() {
             alt={facetas[activa].alt}
           />
         </div>
-        <p className="portada__leyenda-movil">Los sueños también viven aquí</p>
 
         {/* Selector de facetas en móvil */}
-        <div className="facetas-container">
-          <h3 className="facetas__titulo">✦ Las facetas de Luna ✦</h3>
-          <div className="facetas__iconos">
-            {facetas.map((faceta, indice) => (
-              <button
-                key={faceta.id}
-                className={`boton-faceta${activa === indice ? " activa" : ""}`}
-                type="button"
-                aria-label={`Ver ${faceta.nombre}`}
-                onClick={() => setActiva(indice)}
-              >
-                {faceta.emoji}
-              </button>
-            ))}
-          </div>
-          <p className="facetas__ayuda">
-            Toca una luna para cambiar su apariencia
-          </p>
-        </div>
+        {renderSelectorFacetas()}
 
         {/* Botón CTA y divisor abajo en móvil */}
         <div className="portada__cta-movil">

@@ -4,10 +4,12 @@ import Dedicatoria from "./Dedicatoria.jsx";
 import Zorro from "./Zorro.jsx";
 import Cierre from "./Cierre.jsx";
 import ReproductorMusica from "./ReproductorMusica.jsx";
+import EfectoNieve from "./EfectoNieve.jsx";
 
 function PaginaInicio() {
   return (
     <>
+      <EfectoNieve />
       <ReproductorMusica />
       <Portada />
       <Galeria />
