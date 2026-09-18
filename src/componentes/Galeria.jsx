@@ -176,6 +176,16 @@ const regalosList = [
     etiqueta: "🎨 Ilustración Especial",
     cajaEstilo: "azul",
   },
+
+  {
+    id: 20,
+    titulo: "Happy Birthday Luna ❄️💙",
+    autor: "Rai",
+    archivo: "/regalos-luna/regalo-rai-3.jpg",
+    tipo: "imagen",
+    etiqueta: "❄️ Ilustración Invernal",
+    cajaEstilo: "celeste",
+  },
 ];
 
 // Ilustraciones SVG 3D vectoriales en azul noche, celeste y plateado con cintas satinadas y dijes

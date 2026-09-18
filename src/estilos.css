@@ -1327,6 +1327,60 @@ body {
   display: block;
 }
 
+/* ---------- Tarjeta de Dedicatoria Especial ("Qué bonito coincidir contigo") ---------- */
+.dedicatoria {
+  max-width: var(--max-ancho);
+  margin: 40px auto 50px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.dedicatoria__carta-box {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--borde-delicado);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 40px);
+  max-width: 720px;
+  margin: 0 auto;
+  box-shadow: 0 12px 32px rgba(20, 46, 88, 0.12);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.dedicatoria__carta-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(20, 46, 88, 0.16);
+}
+
+.dedicatoria__texto {
+  font-family: var(--fuente-cuerpo);
+  font-size: clamp(1rem, 1.8vw, 1.12rem);
+  line-height: 1.85;
+  color: var(--azul-noche);
+  margin-bottom: 16px;
+}
+
+.dedicatoria__firma {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(20, 46, 88, 0.2);
+}
+
+.dedicatoria__saludo {
+  font-size: 0.92rem;
+  color: var(--azul-celeste-texto);
+  font-style: italic;
+}
+
+.dedicatoria__autor {
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  color: var(--azul-noche);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
 /* ---------- Animación de Copos de Nieve Cayendo ---------- */
 .efecto-nieve-contenedor {
   position: fixed;
