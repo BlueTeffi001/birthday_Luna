@@ -166,6 +166,16 @@ const regalosList = [
     etiqueta: "🖼️ Sorpresa de Cumpleaños",
     cajaEstilo: "celeste",
   },
+
+  {
+    id: 19,
+    titulo: "¡Feliz Cumpleaños Luna! 🐝",
+    autor: "Ale 🐝",
+    archivo: "/regalos-luna/regalo-ale.jpg",
+    tipo: "imagen",
+    etiqueta: "🎨 Ilustración Especial",
+    cajaEstilo: "azul",
+  },
 ];
 
 // Ilustraciones SVG 3D vectoriales en azul noche, celeste y plateado con cintas satinadas y dijes
