@@ -16,7 +16,7 @@ const deseosZorro = [
   "Abu Luni🌙, sos un sol siendo Luna, gracias por dar un poquito de tí y ser diferente en este mundo tan frío - Damy",
   "¡Feliz cumpleaños Luni! 🎂❄️🩵 Te quiero mucho, espero pases hermoso, y que apartir de ahora estés cada día más llena de salud y bendiciones. Sos una persona increíble gracias por escucharnos siempre cuando necesitamos. Espero todos tus deseos se cumplan y que disfrutes de tus regalitos 🫶🏻 - Solci",
   "Feliz cumpleaños querida Luna, que todos tus deseos se cumplan, sigue sonriendo por favor, eres valiosa y merces ser feliz siempre. gracias por existir, te quiero mucho - Teffi",
-
+  "Querida Luna... En este día tan especial quiero desearte que tengas el mejor de los días al lado de tus seres queridos y que la alegría y las sonrisas no falten para ti... Una gran y maravillosa chica que en poco tiempo se ganó mi aprecio y cariño 💕 Que Dios te llene de muchas bendiciones para ti y que todas tus metas y sueños se cumplan... Y que todos tus días sean alegres y maravillosos 💕... Sigue siendo la increíble persona que eres 🌷... Te quiero muchísimo. - Con cariño, 🌷Crisbel🌷",
 ];
 
 function Zorro() {
