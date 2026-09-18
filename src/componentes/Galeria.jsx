@@ -76,7 +76,7 @@ const regalosList = [
   {
     id: 9,
     titulo: "¡Feliz Cumpleaños, Luna!",
-    autor: "Con mucho cariño",
+    autor: "Rai",
     archivo: "/regalos-luna/regalo-luna-hbd.jpg",
     tipo: "imagen",
     etiqueta: "🎉 Tarjeta Festiva",
@@ -85,7 +85,7 @@ const regalosList = [
   {
     id: 10,
     titulo: "Recuerdo Especial I",
-    autor: "Mundos de Luna",
+    autor: "Rai",
     archivo: "/regalos-luna/regalo-extra-1.png",
     tipo: "imagen",
     etiqueta: "🌌 Recuerdo Mágico",
@@ -94,7 +94,7 @@ const regalosList = [
   {
     id: 11,
     titulo: "Recuerdo Especial II",
-    autor: "Mundos de Luna",
+    autor: "Rai",
     archivo: "/regalos-luna/regalo-extra-2.png",
     tipo: "imagen",
     etiqueta: "🌙 Momento Especial",
@@ -103,7 +103,7 @@ const regalosList = [
   {
     id: 12,
     titulo: "Para Luna con cariño",
-    autor: "Detalle Especial",
+    autor: "Wil",
     archivo: "/regalos-luna/regalo-extra-3.jpg",
     tipo: "imagen",
     etiqueta: "💖 Regalo de Amigas",
@@ -112,7 +112,7 @@ const regalosList = [
   {
     id: 13,
     titulo: "Detalle Mágico I",
-    autor: "Mundos de Luna",
+    autor: "Rai",
     archivo: "/regalos-luna/regalo-extra-4.jpg",
     tipo: "imagen",
     etiqueta: "✨ Ilustración Especial",
@@ -121,10 +121,49 @@ const regalosList = [
   {
     id: 14,
     titulo: "Detalle Mágico II",
-    autor: "Mundos de Luna",
+    autor: "Rai",
     archivo: "/regalos-luna/regalo-extra-5.jpg",
     tipo: "imagen",
     etiqueta: "🎁 Sorpresa de Cumpleaños",
+    cajaEstilo: "celeste",
+  },
+  {
+    id: 15,
+    titulo: "Video para Luna",
+    autor: "Romi",
+    archivo: "/regalos-luna/regalo-romi.mp4",
+    tipo: "video",
+    etiqueta: "🎬 Mensaje de Video",
+    cajaEstilo: "plateado",
+  },
+
+  {
+    id: 16,
+    titulo: "Para Lunita",
+    autor: "Valen",
+    archivo: "/regalos-luna/regalo-valen.jpg",
+    tipo: "imagen",
+    etiqueta: "🖼️ Sorpresa de Cumpleaños",
+    cajaEstilo: "plateado",
+  },
+
+  {
+    id: 17,
+    titulo: "Un regalo para Luna",
+    autor: "Dineth",
+    archivo: "/regalos-luna/regalo-dineth.jpg",
+    tipo: "imagen",
+    etiqueta: "🖼️ Sorpresa de Cumpleaños",
+    cajaEstilo: "azul",
+  },
+  
+  {
+    id: 18,
+    titulo: "¡Feliz Cumpleaños!",
+    autor: "Wil",
+    archivo: "/regalos-luna/regalo-wil.jpeg",
+    tipo: "imagen",
+    etiqueta: "🖼️ Sorpresa de Cumpleaños",
     cajaEstilo: "celeste",
   },
 ];
@@ -520,7 +559,7 @@ function Galeria() {
             </header>
 
             <div className="modal-body">
-              {regaloSeleccionado.tipo === "imagen" && (
+              {regaloSeleccionado.tipo?.toLowerCase() === "imagen" && (
                 <div className="modal-imagen-wrapper">
                   <img
                     src={regaloSeleccionado.archivo}
@@ -543,13 +582,13 @@ function Galeria() {
                       rel="noopener noreferrer"
                       className="modal-action-btn modal-action-btn--descargar"
                     >
-                       Descargar Imagen
+                      📥 Descargar Imagen
                     </a>
                   </div>
                 </div>
               )}
 
-              {regaloSeleccionado.tipo === "video" && (
+              {regaloSeleccionado.tipo?.toLowerCase() === "video" && (
                 <div className="modal-video-wrapper">
                   <video
                     src={regaloSeleccionado.archivo}
@@ -582,7 +621,7 @@ function Galeria() {
                 </div>
               )}
 
-              {regaloSeleccionado.tipo === "pdf" && (
+              {regaloSeleccionado.tipo?.toLowerCase() === "pdf" && (
                 <div className="modal-pdf-wrapper">
                   <iframe
                     src={regaloSeleccionado.archivo}
