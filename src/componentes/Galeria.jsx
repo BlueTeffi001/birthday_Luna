@@ -186,6 +186,16 @@ const regalosList = [
     etiqueta: "❄️ Ilustración Invernal",
     cajaEstilo: "celeste",
   },
+
+  {
+    id: 21,
+    titulo: "Happy Bday Luni 🎂❄️",
+    autor: "Solci 🫶🏻",
+    archivo: "/regalos-luna/regalo-solci.mp4",
+    tipo: "video",
+    etiqueta: "🎥 Video Especial",
+    cajaEstilo: "plateado",
+  },
 ];
 
 // Ilustraciones SVG 3D vectoriales en azul noche, celeste y plateado con cintas satinadas y dijes
